@@ -1,0 +1,42 @@
+total = 0
+
+
+#Print Statements (Prints Whatever you want it to print)
+print("####################################")
+print("Welcome to PizzaHaven")
+print("####################################")
+print ("")
+print("####################################")
+
+print("Please Enter Your Name Before We Procced.")
+#Input to allow user's to enter their name
+name = input("Name: ")
+print("####################################")
+
+#Menu
+print("####################################")
+print("Menu:")
+print ("1. Meatlovers Pizza $10")
+print ("2. Hawaiian Pizza $5")
+print ("3. VegeDeluxe Pizza $5")
+print("####################################")
+
+print ("")
+quantity =order = int(input("Please Enter number for pizza order u want: "))
+count = 0
+
+#Asks user for order number
+if order == 1:
+  print("Order: Meatlovers Pizza")
+  print ("Total: $10")
+
+elif order == 2:
+  print("Order: Hawaiian Pizza")
+  print ("Total: $5")
+
+elif order == 3:
+  print("Order: VegeDeluxe Pizza")
+  print ("Total: $5")
+
+else:
+  print("Invaild Number. Please Enter A Vaild Number")
