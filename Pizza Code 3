@@ -42,11 +42,11 @@ while True:
     print("\nMenu:")
     for index, pizza in menu.items():
         print(f"{index}. {pizza['name']} Pizza - ${pizza['price']:.2f}")
-        print("   Toppings: " + ", ".join(pizza['toppings']))
+        print("   Toppings: " + ", ".join(pizza['toppings']))   #using f string format, to print this line.
 
     choice = int(input("Please enter the number for the pizza you want to order (0 to exit): "))
 
-    if choice == 0:
+    if choice == 0:                              #comments were made about this section of code on version 2.
         break 
 
     if choice in menu:
