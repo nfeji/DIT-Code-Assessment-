@@ -1,0 +1,61 @@
+customer_address = {}  
+
+menu = {
+    1: {'name': 'Pollo', 'price': 10.00, 'toppings': ['Cheese', 'Sausage', 'Ham', 'pepper']}, #Index of Pizzas on the menu       (dictionary of menu'd items)
+    2: {'name': 'Hawaiian', 'price': 5.00, 'toppings': ['Ham', 'Pineapple', 'Cheese' ]},
+    3: {'name': 'Vegedelux', 'price': 5.00, 'toppings': ['Mushrooms', 'Peppers', 'Onions', 'Olives']}
+}
+
+name = input("Please enter your name: ")                    (basic user details)
+
+age = input("Please enter your age: ")
+
+print("Welcome to PizzaHaven, {}!".format(name))  #says welcome to PizzaHaven and then prints your name!
+
+total = 0
+
+while True:
+    print("\nMenu:")                                    #prints the menu and options for toppings
+    for index, pizza in menu.items():
+        print(f"{index}. {pizza['name']} Pizza - ${pizza['price']:.2f}") #checks the index for pizzas and toppings           
+        print("   Toppings: " + ", ".join(pizza['toppings']))       #adds the total of the toppings to the overall cost
+    
+    choice = int(input("Please enter the number for the pizza you want to order (0 to exit): "))
+
+    if choice == 0:
+        break                        #break the code and ends the program by saying thank you from ordering and the total cost you have to pay.   
+
+    if choice in menu:
+        pizza = menu[choice]
+        pizza_name = pizza['name']
+        pizza_price = pizza['price']
+
+        quantity = int(input("Enter the quantity required: "))
+
+        if quantity > 0:
+            line_total = pizza_price * quantity
+            total += line_total
+            print(f"Order: {pizza_name} Pizza") #calculates total after all pizzas added.
+            print(f"Quantity: {quantity}")
+            print(f"Total: ${line_total:.2f}")
+        else:
+            print("Invalid quantity. Please enter a positive number.")
+    else:
+        print("Invalid input. Please enter a valid number.")
+print("Please provide us with your name, address and phonenumber")       #customer details.
+customer_address['street_name'] = input("What is your streetname and housenumber? ")
+customer_address['postalcode'] = input("What is the postalcode and cityname? ")
+
+while True:
+
+        try:
+            customer_address = int(input('Please enter your phone number: '))
+
+            print('thank you for ordering from PizzaHaven')
+
+            break
+
+        except ValueError :
+            print('enter only numbers')
+print(f"Your total cost is: ${total:.2f}")
+
