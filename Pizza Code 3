@@ -1,0 +1,76 @@
+customer_address = {}
+
+menu = {
+    1: {'name': 'Pollo', 'price': 10.00, 'toppings': ['Cheese', 'Sausage', 'Ham', 'Pepper']},
+    2: {'name': 'Hawaiian', 'price': 5.00, 'toppings': ['Ham', 'Pineapple', 'Cheese']},
+    3: {'name': 'Vegedelux', 'price': 5.00, 'toppings': ['Mushrooms', 'Peppers', 'Onions', 'Olives']} #index of pizzas ordered
+}
+
+name = input("Please enter your name: ")
+
+while True:
+    try:
+        age = int(input('Please enter your age: '))
+        break
+    except ValueError:
+        print('Please enter only integers.')
+
+if age >= 18:
+    print("Please continue with the code.")
+else:
+    print("You are not eligible to use this code. Sorry for the inconvenience.") #kills the program if they do not meet the required age limit
+    exit()
+ 
+
+
+print("Please provide us with your name, address, and phone number.")
+customer_address['street_name'] = input("What is your street name and house number? ")
+customer_address['postalcode'] = input("What is the postal code and city name? ") #Basic User details, helps us find out where they are ordering from for the fastest delivery. 
+
+while True:
+    try:
+        customer_phone = int(input('Please enter your phone number: ')) #makes sure that the user only enters Integers
+        break
+    except ValueError:
+        print('Please enter only Integers') 
+
+print("Welcome to PizzaHaven, {}!".format(name)) #says welcome and prints your name you entered next to it
+
+total = 0  #starts off total from 0
+#Main routine
+while True:
+    print("\nMenu:")
+    for index, pizza in menu.items():
+        print(f"{index}. {pizza['name']} Pizza - ${pizza['price']:.2f}")
+        print("   Toppings: " + ", ".join(pizza['toppings']))
+
+    choice = int(input("Please enter the number for the pizza you want to order (0 to exit): "))
+
+    if choice == 0:
+        break 
+
+    if choice in menu:
+        pizza = menu[choice]
+        pizza_name = pizza['name']
+        pizza_price = pizza['price']
+
+        while True:
+            try:
+                quantity = int(input("Enter the quantity required: "))
+                if quantity > 0:
+                    line_total = pizza_price * quantity
+                    total += line_total
+                    print(f"Order: {pizza_name} Pizza")
+                    print(f"Quantity: {quantity}")
+                    print(f"Total: ${line_total:.2f}")
+                    break
+                else:
+                    print("Invalid quantity. Please enter a positive number.")
+            except ValueError:
+                print('Please enter only Integers.')
+
+    else:
+        print("Invalid input. Please enter a valid number.")
+
+print('Thank you for ordering from PizzaHaven!, have a great rest of your day')
+print(f"Your total cost is: ${total:.2f}")# using f string format, to print.
